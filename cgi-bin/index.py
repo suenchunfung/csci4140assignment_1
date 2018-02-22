@@ -1,11 +1,11 @@
-#!D:/CSCI4140/python/python-3.5.4.amd64/python
+#! /usr/bin/env python
 import cgi, cgitb, os, random
 import mysql.connector
 from os import environ
 import os
 
 #connect tio the data basestring
-userdb = mysql.connector.connect(user='alan', password='alansuen',host='localhost',database='accountdata')
+userdb = mysql.connector.connect(user='alan', password='alansuen',host='10.129.30.95',database='accountdata')
 cursor = userdb.cursor()
 
 userName = 'public'
