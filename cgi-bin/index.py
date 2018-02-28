@@ -1,11 +1,15 @@
-#! /usr/bin/env python
+#!D:/CSCI4140/python/python-3.5.4.amd64/python
 import cgi, cgitb, os, random
 import mysql.connector
 from os import environ
 import os
 
+#delete all temp file
+tempList = os.listdir('/CSCI4140/xampp/htdocs/temp/')
+for temp in tempList:
+  os.remove('/CSCI4140/xampp/htdocs/temp/'+temp)
 #connect tio the data basestring
-userdb = mysql.connector.connect(user='alan', password='alansuen',host='10.129.30.95',database='accountdata')
+userdb = mysql.connector.connect(user='alan', password='alansuen',host='localhost',database='accountdata')
 cursor = userdb.cursor()
 
 userName = 'public'
@@ -28,7 +32,7 @@ if session !=0:
   if result is not None:
     userName = result[0]
 #get the photo list
-query = ("SELECT id,imageName FROM photo WHERE privacy='"+userName+"' OR privacy='public'")
+query = ("SELECT id,imageName FROM photo WHERE privacy='"+userName+"' OR privacy='public' ORDER BY id DESC")
 cursor.execute(query)
 #generate the photoList
 record = cursor.fetchone()
@@ -54,10 +58,12 @@ print ("<html><head>")
 print ("<title>Web Instagram</title>")
 print ("</head>")
 print ("<body>")
-print ("<a href='/login.py' position=absolute left:30px margin:10px>Login</a>")
+if session==0:
+  print ("<a href='/login.py' position=absolute left:30px margin:10px>Login</a>")
 print ("<a href='/createAccount.py' margin:10px>Create Account</a>")
 print ("<a href='/updateAccount.py' margin:10px>Update Account</a>")
-print ("<a href='/logout.py' margin:10px>Log out</a>")
+if session !=0:
+  print ("<a href='/logout.py' margin:10px>Log out</a>")
 print ("<p>Login as")
 if userName=='public':
   print("Not login")
