@@ -6,4 +6,5 @@
 4.3 Then intall "wand" by "pip install Wand"
 4.4 Then intall "mysql-connector" by "pip install mysql-connector"
 5. I cannot finish the image type checking because I cannot find a function.
-6. Sorry for not finishing the Initialise part since I cannot finish it before the deadline.
+6. Two empty folders "temp" and "thumbnails" should be created first under the "cgi-bin"
+7. Sorry for not finishing the Initialise part since I cannot finish it before the deadline.
